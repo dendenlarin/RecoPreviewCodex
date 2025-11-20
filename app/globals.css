@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --mesh: theme('backgroundImage.mesh');
+  --grain: theme('backgroundImage.grain');
+  --bg: #0c0f1a;
+  --panel: rgba(255,255,255,0.03);
+  --accent: #73f517;
+  --muted: #9da5c3;
+}
+
+html, body {
+  background: radial-gradient(circle at 20% 20%, rgba(115,245,23,0.06), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05), transparent 30%),
+    radial-gradient(circle at 60% 80%, rgba(93,210,0,0.07), transparent 30%),
+    #0a0c14;
+  color: #f4f6ff;
+  min-height: 100%;
+  font-family: 'Chivo', system-ui, sans-serif;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--grain);
+  opacity: 0.3;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(93,210,0,0.65), rgba(255,255,255,0.5), rgba(93,210,0,0.45));
+  border-radius: inherit;
+  z-index: 0;
+  opacity: 0.75;
+  filter: blur(6px);
+}
+
+.gradient-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-glow {
+  box-shadow: 0 15px 45px rgba(0,0,0,0.45), 0 0 40px rgba(115,245,23,0.2);
+}
+
+.mesh-panel {
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(12,15,26,0.6)),
+    radial-gradient(circle at 20% 20%, rgba(115,245,23,0.08), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05), transparent 30%),
+    rgba(12,15,26,0.8);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+}
+
+.highlight-pill {
+  background: linear-gradient(120deg, rgba(115,245,23,0.24), rgba(255,255,255,0.16));
+  color: #0a0c14;
+  font-weight: 600;
+}
